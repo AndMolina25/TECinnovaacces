@@ -19,7 +19,49 @@ En el acceso del plantel y en la ventanilla del **Departamento de Almacén**, el
 - **Portal de Almacén:** Control centralizado de reportes, actualización de estados (`Pendiente`, `En_Proceso`, `Resuelto`), reactivación o asignación de nuevo código RFID y desactivación automática del pase temporal al resolver.
 
 ---
+erDiagram
+    USUARIOS ||--o{ TARJETAS : posee
+    USUARIOS ||--o{ INCIDENCIAS_ACCESO : reporta
+    TARJETAS ||--o{ INCIDENCIAS_ACCESO : vinculada_a
+    INCIDENCIAS_ACCESO ||--o{ BITACORA_ACCESOS_QR : genera
+    USUARIOS ||--o{ BITACORA_ACCESOS_QR : valida
 
+    USUARIOS {
+        int id_usuario PK
+        string identificador UK
+        string nombre_completo
+        string correo UK
+        string rol
+        string carrera_o_area
+    }
+
+    TARJETAS {
+        int id_tarjeta PK
+        string codigo_rfid UK
+        int id_usuario FK
+        string estado
+    }
+
+    INCIDENCIAS_ACCESO {
+        int id_incidencia PK
+        string folio UK
+        int id_usuario FK
+        int id_tarjeta_afectada FK
+        string motivo
+        string codigo_qr_temporal UK
+        datetime qr_expiracion
+        string estatus_tramite
+        int atendido_por FK
+    }
+
+    BITACORA_ACCESOS_QR {
+        int id_log PK
+        int id_incidencia FK
+        int id_guardia FK
+        string puerta_acceso
+        string resultado_validacion
+        datetime fecha_hora_escaneo
+    }
 ## 2. Diagrama del Proceso Automatizado (TO-BE)
 
 ```mermaid
@@ -36,3 +78,14 @@ flowchart TD
     I -->|No| K[Reactiva chip y marca Resuelto]
     J --> L[QR temporal queda inactivo y tarjeta Activa]
     K --> L
+
+
+
+
+
+
+
+
+
+
+
