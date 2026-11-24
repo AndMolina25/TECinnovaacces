@@ -18,7 +18,7 @@ En el acceso del plantel y en la ventanilla del **Departamento de Almacén**, el
 - **Portal del Guardia:** Validación rápida de pases QR temporales en torniquetes y registro automático en bitácora digital.
 - **Portal de Almacén:** Control centralizado de reportes, actualización de estados (`Pendiente`, `En_Proceso`, `Resuelto`), reactivación o asignación de nuevo código RFID y desactivación automática del pase temporal al resolver.
 
----
+```mermaid
 erDiagram
     USUARIOS ||--o{ TARJETAS : posee
     USUARIOS ||--o{ INCIDENCIAS_ACCESO : reporta
