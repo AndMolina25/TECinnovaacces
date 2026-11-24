@@ -81,7 +81,21 @@ flowchart TD
 
 
 
-
+TECinnovaacces/
+├── backend/
+│   ├── app.py
+│   └── requirements.txt
+├── database/
+│   └── schema_y_datos.sql
+├── docs/
+├── frontend/
+│   ├── static/
+│   └── templates/
+│       ├── index.html
+│       ├── panel_alumno.html
+│       ├── panel_guardia.html
+│       └── panel_almacen.html
+└── README.md
 
 
 
